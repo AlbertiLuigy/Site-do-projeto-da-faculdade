@@ -9,7 +9,6 @@ class SimulacaoStore {
 	completo = $state(true);
 	/** Cenário futuro ("quando eu tiver um salário de..."). */
 	futuro = $state(false);
-	cidade = $state('');
 
 	resultado = $derived<Resultado>(calcular(this.devido, this.selecao));
 

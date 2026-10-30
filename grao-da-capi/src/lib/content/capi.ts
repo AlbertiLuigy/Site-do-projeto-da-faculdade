@@ -87,4 +87,4 @@ export const CAPI_EXTRA = {
 } satisfies Record<string, LinhaCapi>;
 
 /** Sequência de estágios da semente, do grão à árvore. */
-export const ESTAGIOS = ['🌰', '🌱', '🌿', '🌳'];
+export const ESTAGIOS = ['🫘', '🌱', '🌿', '🌳'];

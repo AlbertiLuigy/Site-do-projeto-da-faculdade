@@ -126,8 +126,11 @@
 					</p>
 					<div class="rw">
 						{#each resultado.linhas as l (l.chave)}
-							<div style="margin-top:12px">
-								<div><span>{l.rotulo}</span><span>{brl(l.valor)}</span></div>
+                                                        <div class="linha-resultado" style="margin-top:12px">
+                                                                <div class="topo-resultado">
+                                                                        <span class="rotulo-resultado">{l.rotulo}</span>
+                                                                        <span class="valor-resultado">{brl(l.valor)}</span>
+                                                                </div>
 								<span class="mu">{l.nota}</span>
 								<i style="width:{Math.max(6, (l.valor / maior) * 100)}%"></i>
 							</div>
@@ -177,4 +180,27 @@
 		font-weight: 700;
 		padding: 0 6px;
 	}
+        .topo-resultado {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+                align-items: baseline;
+        }
+        .rotulo-resultado {
+                min-width: 0;
+        }
+        .valor-resultado {
+                flex: none;
+                white-space: nowrap;
+        }
+        @media (max-width: 560px) {
+                .topo-resultado {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        gap: 4px;
+                }
+                .valor-resultado {
+                        white-space: normal;
+                }
+        }
 </style>

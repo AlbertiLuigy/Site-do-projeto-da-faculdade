@@ -4,7 +4,7 @@ Site interativo do **Projeto GRÃO** (extensão universitária — PUC Minas): c
 
 A experiência é conduzida pela mascote **Capi, a Capivara Capital**, que explica os conceitos, reage às respostas do quiz e cresce (do grão à árvore) conforme o usuário avança na leitura.
 
-> **Status:** protótipo migrado do site original (HTML/CSS/JS único) para **SvelteKit + Svelte 5**. Build, testes e checagem de tipos passando.
+> **Status:** protótipo migrado do site original (HTML/CSS/JS único) para **SvelteKit + Svelte 5**. O projeto já conta com responsividade revisada, hero mobile ajustada, balão da Capi refinado e card de compartilhamento com prévia + exportação em PNG.
 
 ---
 
@@ -78,7 +78,7 @@ grao-da-capi/
 │  │     ├─ Secao.svelte       # wrapper com IntersectionObserver (progresso/balão)
 │  │     ├─ Duplo.svelte       # texto em 2 vozes (normal / família)
 │  │     ├─ CapiMascot.svelte  # a mascote
-│  │     ├─ CapiBubble.svelte  # balão flutuante (typewriter + estágio)
+│  │     ├─ CapiBubble.svelte  # balão flutuante da Capi (typewriter + estágio)
 │  │     ├─ Header.svelte      # topo (nav, tema, toggle de modo família)
 │  │     ├─ Rodape.svelte
 │  │     ├─ Hero.svelte
@@ -89,7 +89,7 @@ grao-da-capi/
 │  │     ├─ Destinos.svelte
 │  │     ├─ Impacto.svelte
 │  │     ├─ SobreCapi.svelte   # por que a Capi
-│  │     └─ CardSemente.svelte # card de compartilhamento (1:1 p/ stories)
+│  │     └─ CardSemente.svelte # card de compartilhamento (prévia + exportação PNG)
 │  └─ routes/
 │     ├─ +layout.svelte        # Header + balão da Capi + Rodapé + <title> por rota
 │     ├─ +layout.ts            # prerender = true
@@ -150,7 +150,10 @@ O motor foi reescrito a partir do protótipo para **corrigir um bug real**: a ve
 
 - **Tokens em `:root`** (`--bg`, `--br`, `--ac`, `--g`, etc.) com tema claro/escuro via `data-theme` e `prefers-color-scheme`.
 - **Modo família:** cada fala/texto tem duas vozes (`normal` e `familia`), alternadas pelo toggle no topo.
-- **Progresso de leitura** alimenta a barra do topo e o **crescimento da muda** (`--g`) / estágio (`🌰 → 🌱 → 🌿 → 🌳`).
+- **Progresso de leitura** alimenta a barra do topo e o **crescimento da muda** (`--g`) / estágio (`🫘 → 🌱 → 🌿 → 🌳`).
+- **Responsividade revisada** em hero, header, quiz, simulador, card de compartilhamento e balão da Capi.
+- **Hero mobile** com Capi em linha própria acima do balão de apresentação.
+- **Card de compartilhamento** com composição visual mais rica e exportação coerente em PNG 1080×1920.
 - `aria-live`, `aria-pressed`, foco visível e respeito a `prefers-reduced-motion`.
 
 ---
@@ -162,13 +165,15 @@ O motor foi reescrito a partir do protótipo para **corrigir um bug real**: a ve
 - Camada de conteúdo das falas da Capi (2 vozes) e conteúdo editorial do site.
 - Stores de tema, modo família, guia/progresso e simulação.
 - 15 componentes e 10 rotas.
+- Responsividade refinada para mobile, tablet e desktop.
+- Hero mobile reorganizada com a Capi apresentando o balão sem sobreposição.
+- Card de compartilhamento com prévia melhorada e geração de PNG.
 - `npm test`, `npm run build` e `npm run check` passando.
 
 ## 🚧 O que falta fazer
 
 - [ ] **Conferir a fidelidade visual** de cada seção contra o protótipo original (`Site-do-projeto-da-faculdade/index.html`).
 - [ ] **Portar as animações da Capi** (piscar, acenar, reagir a acerto/erro do quiz).
-- [ ] **Exportar o card como imagem** (PNG 1080×1920) para download/compartilhamento — hoje o `CardSemente` monta o layout, falta a exportação.
 - [ ] **Dashboard de estatísticas** da campanha (nº de simulações) — precisa de backend ou serviço.
 - [ ] **PWA / offline** e ícones para instalação em celular.
 - [ ] **SEO/OG**: imagem de Open Graph dedicada e `<meta>` por rota.
@@ -180,6 +185,7 @@ O motor foi reescrito a partir do protótipo para **corrigir um bug real**: a ve
 - **Persistir a simulação** (localStorage) para retomar o card depois.
 - **CTAs de destaque**: botões de ação podem seguir o design system em vez de estilos pontuais.
 - **Revisar textos** das duas vozes da Capi para consistência de tom (acadêmico-dinâmico × dia a dia).
+- **Lapidar o card exportado**: o layout já foi melhorado, mas ainda vale refinar proporção, hierarquia e legibilidade da arte em telas pequenas e no PNG final.
 - **Cobertura de testes**: hoje só o motor fiscal está testado — vale cobrir `brl.ts` e regras de exibição.
 - **Desempenho**: avaliar `loading="lazy"`/`fetchpriority` na imagem da mascote e pré-carregar fontes, se houver.
 - **Acessibilidade**: auditar o toggle de tema/modo família e o canvas do card com leitores de tela.

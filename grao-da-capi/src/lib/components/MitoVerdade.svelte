@@ -96,4 +96,12 @@
 		color: var(--br);
 		margin: 12px auto;
 	}
+        @media (max-width: 560px) {
+                .qb {
+                        flex-direction: column;
+                }
+                .qb .b {
+                        width: 100%;
+                }
+        }
 </style>

@@ -54,4 +54,31 @@
 		border-radius: 0 4px 4px 0;
 		transition: width 0.6s;
 	}
+        @media (max-width: 720px) {
+                header {
+                        flex-wrap: wrap;
+                        align-items: center;
+                }
+                .marca {
+                        flex: 1 1 100%;
+                        white-space: normal;
+                }
+                .row {
+                        width: 100%;
+                        justify-content: space-between;
+                }
+        }
+        @media (max-width: 460px) {
+                .marca {
+                        font-size: 1rem;
+                }
+                .row .b.s {
+                        flex: 1;
+                        justify-content: center;
+                        padding-inline: 14px;
+                    }
+                .row .b.s:last-child {
+                        flex: 0 0 auto;
+                }
+        }
 </style>

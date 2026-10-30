@@ -434,22 +434,50 @@ ol.st li:last-child::after {
 
 /* Card de compartilhamento */
 .sel {
-	background: linear-gradient(145deg, #1f7a47, #0f3a22);
+        position: relative;
+        overflow: hidden;
+        background:
+                radial-gradient(circle at 18% 10%, rgba(255, 255, 255, 0.14), transparent 28%),
+                radial-gradient(circle at 80% 82%, rgba(240, 169, 59, 0.2), transparent 24%),
+                linear-gradient(150deg, #1f7a47 0%, #14663b 52%, #0b321d 100%);
 	color: #fff;
-	border-radius: 24px;
-	padding: 26px;
-	font: 700 1.25rem/1.4 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
+        border-radius: 28px;
+        padding: 24px;
+        font: 700 1.12rem/1.4 'Arial Rounded MT Bold', 'Trebuchet MS', sans-serif;
 	display: grid;
-	grid-template-columns: 1fr 110px;
-	gap: 12px;
-	align-items: end;
-	box-shadow: var(--sh);
+        grid-template-columns: minmax(0, 1.1fr) minmax(180px, 0.9fr);
+        gap: 18px;
+        align-items: stretch;
+        box-shadow:
+                0 20px 40px rgba(18, 49, 30, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .sel small {
 	display: block;
-	font: 600 0.8rem 'Segoe UI', sans-serif;
-	color: var(--ac);
-	margin-top: 12px;
+        font: 600 0.8rem 'Segoe UI', sans-serif;
+        color: var(--ac);
+}
+@media (max-width: 640px) {
+        .sel {
+                grid-template-columns: 1fr;
+                padding: 20px;
+                gap: 18px;
+        }
+        .sel .sel-copy {
+                order: 1;
+        }
+        .sel .sel-art {
+                order: 2;
+                min-height: 200px;
+        }
+        .sel .sel-capi {
+                width: min(180px, 56vw);
+                margin-left: auto;
+        }
+        .sel .sel-footer {
+                order: 3;
+        }
 }
 
 @media (prefers-reduced-motion: reduce) {
